@@ -4,7 +4,7 @@ import com.example.moviesappjetpack.models.Movie
 
 class MovieRepository(private val movieApiService: MovieApiService) {
     suspend fun getMovies(): List<Movie> {
-        return movieApiService.getMovies()
+        return movieApiService.getLatestMovies()
     }
 
     suspend fun getMovieById(movieId: String): Movie {
