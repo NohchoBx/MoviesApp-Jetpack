@@ -12,7 +12,7 @@ interface MovieApiService {
         }
     }
 
-    @GET("movie/latest")
+    @GET("movie/latest/")
     suspend fun getLatestMovies(): List<Movie>
 
     @GET("movies/{id}")

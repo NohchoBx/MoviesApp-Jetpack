@@ -2,8 +2,8 @@ package com.example.moviesappjetpack.repository
 import com.example.moviesappjetpack.api.MovieApiService
 import com.example.moviesappjetpack.models.Movie
 
-class MovieRepository(private val movieApiService: MovieApiService) {
-    suspend fun getMovies(): List<Movie> {
+class MovieRepository(private val movieApiService: MovieApiService = MovieApiService.getInstance()) {
+    suspend fun getLatestMovies(): List<Movie> {
         return movieApiService.getLatestMovies()
     }
 

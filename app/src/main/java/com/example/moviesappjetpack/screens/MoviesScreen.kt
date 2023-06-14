@@ -4,14 +4,17 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.moviesappjetpack.models.Movie
 import com.example.moviesappjetpack.viewmodels.MovieViewModel
+import androidx.compose.runtime.livedata.observeAsState
+
 
 @Composable
-fun MovieScreen(movieViewModel: MovieViewModel = remember { MovieViewModel() }) {
-    val movies by movieViewModel.movies
+fun MovieScreen(movieViewModel: MovieViewModel = viewModel()) {
+    val movies: List<Movie> by movieViewModel.movies.observeAsState(emptyList())
 
-    LaunchedEffect(true) {
+    LaunchedEffect(Unit) {
         movieViewModel.fetchMovies()
     }
 
