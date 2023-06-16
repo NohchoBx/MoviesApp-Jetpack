@@ -1,10 +1,22 @@
-package com.example.moviesappjetpack
+import com.example.moviesappjetpack.api.MovieApiService
 import com.example.moviesappjetpack.repository.MovieRepository
-import com.example.moviesappjetpack.viewmodels.MovieViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent;
 
-val appModule = module {
-    single { MovieRepository() }
-    viewModel { MovieViewModel(get()) }
+
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule {
+    // Define your dependencies here
+    @Provides
+    fun provideMovieRepository(movieApiService: MovieApiService): MovieRepository {
+        return MovieRepository(movieApiService)
+    }
+
+    @Provides
+    fun provideMovieApiService(): MovieApiService {
+        return RetrofitClient.getMovieApiService()
+    }
 }
