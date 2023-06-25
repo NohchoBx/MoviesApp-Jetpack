@@ -18,7 +18,11 @@ class MovieViewModel @Inject constructor(private val movieRepository: MovieRepos
     fun fetchMovies() {
         viewModelScope.launch {
             try {
+                println("HEEEEEI: ")
                 val result = movieRepository.getLatestMovies()
+                for (movie in result) {
+                    println("HEEEEEI: " + movie.toString())
+                }
                 _movies.value = result
             } catch (e: Exception) {
                 // Handle error

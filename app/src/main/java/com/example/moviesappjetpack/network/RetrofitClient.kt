@@ -1,15 +1,21 @@
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.moviesappjetpack.api.MovieApiService
 import io.github.cdimascio.dotenv.Dotenv
+import io.github.cdimascio.dotenv.dotenv
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.nio.file.Paths
 
+@RequiresApi(Build.VERSION_CODES.O)
 object RetrofitClient {
 
-    private val dotenv: Dotenv by lazy {
-        Dotenv.configure()
-            .directory("app")
-            .load()
+    val dotenv: Dotenv by lazy {
+        dotenv {
+            directory = "/assets"
+            filename = "env" // instead of '.env', use 'env'
+        }
     }
 
     private val apiToken: String by lazy {
