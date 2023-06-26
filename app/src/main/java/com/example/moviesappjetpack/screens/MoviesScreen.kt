@@ -9,20 +9,20 @@ import com.example.moviesappjetpack.viewmodels.MovieViewModel
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-
+import com.example.moviesappjetpack.models.MovieList
 
 
 @Composable
 fun MovieScreen() {
     val movieViewModel= hiltViewModel<MovieViewModel>()
 
-    val movies: List<Movie> by movieViewModel.movies.observeAsState(emptyList())
+    val movies: MovieList by movieViewModel.movies.observeAsState(MovieList())
 
     LaunchedEffect(Unit) {
         movieViewModel.fetchMovies()
     }
 
     Surface(color = MaterialTheme.colorScheme.background) {
-        MovieList(movies)
+        MovieList(movies.movies)
     }
 }

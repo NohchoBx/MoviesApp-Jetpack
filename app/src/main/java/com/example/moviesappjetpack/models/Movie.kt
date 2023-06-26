@@ -1,13 +1,14 @@
 package com.example.moviesappjetpack.models
 
-data class Movie (
-   val title: String,
+data class Movie(
+   val name: String,
    val overview: String,
-   val rating: Double,
-   val votes: Int
+   val popularity: Double,
+   val vote_count: Int
 ) {
    override fun toString(): String {
-      return "Movie(title='$title', overview='$overview', rating=$rating, votes=$votes)"
+      return "Movie(title='$name', overview='$overview', popularity=$popularity, votesCount=$vote_count)"
    }
 }
+
 

@@ -12,9 +12,9 @@ import com.example.moviesappjetpack.models.Movie
 @Composable
 fun MovieItem(movie: Movie) {
     Column(modifier = Modifier.padding(16.dp)) {
-        Text(text = movie.title, style = MaterialTheme.typography.bodyLarge)
+        Text(text = movie.name, style = MaterialTheme.typography.bodyLarge)
         Text(text = movie.overview, style = MaterialTheme.typography.bodyMedium)
-        Text(text = "Rating: ${movie.rating}%", style = MaterialTheme.typography.bodySmall)
-        Text(text = "Votes: ${movie.votes}", style = MaterialTheme.typography.bodySmall)
+        Text(text = "Rating: ${movie.popularity}%", style = MaterialTheme.typography.bodySmall)
+        Text(text = "Votes: ${movie.vote_count}", style = MaterialTheme.typography.bodySmall)
     }
 }
